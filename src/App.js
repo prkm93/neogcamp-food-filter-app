@@ -4,6 +4,7 @@ import './App.css';
 function App() {
 
   const [categorylist, setCategoryList] = useState('');
+  const [foodList, setFoodList] = useState('');
 
   useEffect(() => {
     filteredFoodCategory();
@@ -11,7 +12,7 @@ function App() {
 
   const foodInventory = [
     {
-      name: "Tomato Mozzarella Flatbread",
+      foodName: "Tomato Mozzarella Flatbread",
       type: "sandwich",
       calories: 350,
       carbs: 35
@@ -78,6 +79,12 @@ function App() {
     console.log(categorylist);
   }
 
+  const filterHandler = (item) => {
+    const list = foodInventory.filter(food => food.type === item);
+    console.log(list);
+    setFoodList(list);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -87,7 +94,7 @@ function App() {
           {
             categorylist && categorylist.length && categorylist.map((item) => {
               return (
-                <span className="category-list">
+                <span key={item} className="category-list" onClick={() => filterHandler(item)}>
                   {item}
                 </span>
               )
@@ -96,11 +103,12 @@ function App() {
         </div>
         <hr />
         {
-          foodInventory.map(item => {
+          foodList && Array.isArray(foodList) && foodList.map((item, i) => {
             return (
-              <div>
-                <h3>{item.foodName}</h3>  
-                <p>{item.foodType}</p>  
+              <div key={i} className="food-list">
+                <h4>{item.foodName}</h4>
+                <h5>Calories: {item.calories}</h5>
+                <h5>Carb: {item.carbs}</h5>
               </div>
             )
           })
