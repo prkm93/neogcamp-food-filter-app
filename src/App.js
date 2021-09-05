@@ -5,11 +5,6 @@ function App() {
 
   const [categorylist, setCategoryList] = useState('');
   const [foodList, setFoodList] = useState('');
-
-  useEffect(() => {
-    filteredFoodCategory();
-  }, [])
-
   const foodInventory = [
     {
       foodName: "Tomato Mozzarella Flatbread",
@@ -72,6 +67,10 @@ function App() {
       carbs: 90
     }
   ];
+  
+  useEffect(() => {
+    filteredFoodCategory();
+  }, [foodList])
 
   const filteredFoodCategory = () => {
     const list = foodInventory.map(({type}) => type);
