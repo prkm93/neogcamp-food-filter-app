@@ -10,3 +10,14 @@ body{
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.category-list{
+  border: 2px solid rgb(252, 201, 245);
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: #282c34;
+  font-size: 20px;
+  background-color: rgb(238, 122, 145);
+  cursor:pointer;
+}

@@ -1,6 +1,13 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  const [categorylist, setCategoryList] = useState('');
+
+  useEffect(() => {
+    filteredFoodCategory();
+  }, [])
 
   const foodInventory = [
     {
@@ -41,36 +48,63 @@ function App() {
     },
     {
       foodName: "Chicken Burrito",
-      foodType: "Burrito",
+      type: "Burrito",
       calories: 975,
       carbs: 93
     },
     {
       foodName: "Steak Burrito",
-      foodType: "Burrito",
+      type: "Burrito",
       caloris: 945,
       carbs: 103
     },
     {
       foodName: "Carnitas Burrito",
-      foodType: "Burrito",
+      type: "Burrito",
       calories: 1005,
       carbs: 83
     },
     {
       foodName: "Barbacoa Burrito",
-      foodType: "Burrito",
+      type: "Burrito",
       calories: 965,
       carbs: 90
     }
   ];
+
+  const filteredFoodCategory = () => {
+    const list = foodInventory.map(({type}) => type);
+    setCategoryList([...new Set(list)]);
+    console.log(categorylist);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Craving for food!</h1>
         <p>Checkout my favourite food list!</p>
+        <div>
+          {
+            categorylist && categorylist.length && categorylist.map((item) => {
+              return (
+                <span className="category-list">
+                  {item}
+                </span>
+              )
+            })
+          }    
+        </div>
         <hr />
+        {
+          foodInventory.map(item => {
+            return (
+              <div>
+                <h3>{item.foodName}</h3>  
+                <p>{item.foodType}</p>  
+              </div>
+            )
+          })
+        }
       </header>
     </div>
   );
