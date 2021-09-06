@@ -67,16 +67,15 @@ function App() {
       carbs: 90
     }
   ];
-  
-  useEffect(() => {
-    filteredFoodCategory();
-  }, [foodList])
 
-  const filteredFoodCategory = () => {
-    const list = foodInventory.map(({type}) => type);
-    setCategoryList([...new Set(list)]);
-    console.log(categorylist);
-  }
+  useEffect(() => {
+    const filteredFoodCategory = () => {
+      const list = foodInventory.map(({type}) => type);
+      setCategoryList([...new Set(list)]);
+      console.log(categorylist);
+    }
+    filteredFoodCategory();
+  }, [])
 
   const filterHandler = (item) => {
     const list = foodInventory.filter(food => food.type === item);
