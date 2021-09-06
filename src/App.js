@@ -86,7 +86,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Craving for food!</h1>
+        <div className="food-header">
+           <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Junk_food_portail.svg/1280px-Junk_food_portail.svg.png"} alt="food image"/>
+           <h1>Craving for food!</h1>
+        </div>
         <p>Checkout my favourite food list!</p>
         <div>
           {
